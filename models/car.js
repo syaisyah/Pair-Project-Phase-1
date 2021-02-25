@@ -21,8 +21,7 @@ module.exports = (sequelize, DataTypes) => {
     rental_price_per_day: DataTypes.INTEGER,
     imageURL: DataTypes.STRING,
     status: DataTypes.STRING,
-    plat_number: DataTypes.STRING,
-    stocks: DataTypes.INTEGER
+    plat_number: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Car',
