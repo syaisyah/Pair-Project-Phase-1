@@ -113,26 +113,21 @@ class CarController {
 
   static addUserToCarForm(req, res) {
     let id = +req.params.id;
-    let dataUserCars;
+    let dataCar;
 
-    UserCar.findAll({
-      where: {
-        CarId: id
-      },
-      include: [User, Car]
-    })
+    Car.findByPk(id)
       .then(data => {
-        dataUserCars = data
+        dataCar = data
         return User.findAll()
       })
       .then(users => {
-        dataUserCars.forEach(el => {
-          el.newStartDate = converDate(el.start_date)
-          el.newFinishDate = converDate(el.finish_date)
-          console.log(el.newStartDate)
-        })
+        // dataUserCars.forEach(el => {
+        //   el.newStartDate = converDate(el.start_date)
+        //   el.newFinishDate = converDate(el.finish_date)
+        //   console.log(el.newStartDate)
+        // })
 
-        res.render('addUserCar', { dataUserCars, users })
+        res.render('addUserCar', { dataCar, users })
       })
       .catch(err => {
         res.send(err)
