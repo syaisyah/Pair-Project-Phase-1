@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add User to Car</title>
+</head>
+<body>
+  
+</body>
+</html>
+<h1> Car </h1>
+<table border="1">
+  <tr>
+    <th>Merk</th>
+    <th>Type</th>
+    <th>Category</th>
+  </tr>
+  <tr>
+    <td><%=dataUserCars[0].Car.merk%></td>
+    <td><%=dataUserCars[0].Car.type%></td>
+    <td> <%=dataUserCars[0].Car.category%></td>
+  </tr>
+
+</table>
+
+  <h1> Add User</h1>
+  <form action="/cars/users/<%=dataUserCars.CardId%>" method="POST">
+    <div>
+      <label>User</label><br>
+      <select name="UserId">
+        <%users.forEach(el => {%>
+        <option value="<%=el.id%>"><%=el.getFullNameUser()%></option>
+        <%})%>
+      </select><br>
+    </div>
+    <div><br>
+      <label for="start_date">Start Date</label><br>
+      <input type="date" id="role" name="start_date" value="2021-02-26"><br><br>
+    </div>
+
+    <div>
+      <label for="finish_date">Finish Date</label><br>
+      <input type="date" id="finish_date" name="finish_date" value="2021-02-28"><br><br>
+    </div>
+    <div><br>
+      <input type="submit" value="Save">
+      <input type="reset" value="Cancel">
+    </div>
+  </form>
+
+
+  <h1>List User</h1>
+  <table border="1">
+    <tr>
+      <th>First Name</th>
+      <th>Last Name</th>
+      <th>Start Date</th>
+      <th>Finish Date</th>
+    </tr>
+    <%dataUserCars.forEach(el => {%>
+      <tr>
+        <td><%=el.User.first_name%></td>
+        <td><%=el.User.last_name%></td>
+
+        <td><%=el.newStartDate%></td>
+        <td><%=el.newFinishDate%></td>
+        
+      </tr>
+   <% })%>
+  </table>
+
+  </body>
+
+  </html>

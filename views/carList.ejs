@@ -52,6 +52,7 @@
           <%= el.status %>
         </td>
         <td>
+          <a href="/cars/users/<%=el.id%>">Add User</a>
           <a href="/cars/edit/<%=el.id%>">Edit</a>
           <a href="/cars/delete/<%=el.id%>" onclick="return confirm('Are you sure to delete this?')">Delete</a>
         </td>

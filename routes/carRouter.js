@@ -15,6 +15,10 @@ router.get('/delete/:id', CarController.delete)
 // menampilkan list cars dengan status rent
 router.get('/rent', CarController.showRentCars)
 
+// disini id adalah id car 
+router.get('/users/:id', CarController.addUserToCarForm)
+//router.post('/addUsers/:id', CarController.addUserToCar)
+
 
 
 module.exports = router

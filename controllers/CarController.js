@@ -1,5 +1,6 @@
-const { Car, User, UserCars } = require('../models')
+const { Car, User, UserCar } = require('../models')
 const formatRupiah = require('../helpers/formatRupiah')
+const converDate = require('../helpers/convertDate')
 
 
 class CarController {
@@ -110,6 +111,50 @@ class CarController {
   }
 
 
+  static addUserToCarForm(req, res) {
+    let id = +req.params.id;
+    let dataUserCars;
+
+    UserCar.findAll({
+      where: {
+        CarId: id
+      },
+      include: [User, Car]
+    })
+      .then(data => {
+        dataUserCars = data
+        return User.findAll()
+      })
+      .then(users => {
+        dataUserCars.forEach(el => {
+          el.newStartDate = converDate(el.start_date)
+          el.newFinishDate = converDate(el.finish_date)
+          console.log(el.newStartDate)
+        })
+
+        res.render('addUserCar', { dataUserCars, users })
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  }
+
+  static addUserToCar(req, res) {
+    let CarId = +req.params.id;
+    let { UserId, start_date, finish_date } = req.body;
+    let newUser = { CarId, UserId, start_date, finish_date }
+
+    UserCar.create(newUser)
+      .then(data => {
+        res.redirect(`/cars/addUser/${CarId}`)
+      })
+      .catch(err => {
+        res.send(err)
+      })
+  }
+
 }
+
+
 
 module.exports = CarController
