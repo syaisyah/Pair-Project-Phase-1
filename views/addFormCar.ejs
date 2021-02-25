@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Form Car</title>
+</head>
+
+<body>
+  <h1> Add Cars</h1>
+
+  <form action="/cars/add" method="POST">
+    <div>
+      <label for="merk">Merk: </label><br>
+      <input type="text" id="merk" name="merk"><br><br>
+
+      <label for="type">Type: </label><br>
+      <input type="text" id="type" name="type"><br><br>
+
+      <label for="category">Category: </label><br>
+      <input type="text" id="category" name="category" placeholder="Small"><br><br>
+
+      <label for="released_year">Release Year: </label><br>
+      <input type="text" id="released_year" name="released_year" placeholder="2011"><br><br>
+
+      <label for="rental_price_per_day">Rental Price/Day: </label><br>
+      <input type="text" id="rental_price_per_day" name="rental_price_per_day" placeholder="e.g: 2000"><br><br>
+
+      <label for="imageURL">image Url: </label><br>
+      <input type="text" id="imageURL" name="imageURL"><br><br>
+
+      <label for="plat_number">Plat Number: </label><br>
+      <input type="text" id="plat_number" name="plat_number"><br><br>
+
+      <label for="status">Status: </label><br>
+      <input type="text" id="status" name="status"><br><br>
+    </div>
+
+    <div><br>
+      <input type="submit" value="Save">
+      <input type="reset" value="Cancel">
+    </div>
+  </form>
+
+</body>
+
+</html>

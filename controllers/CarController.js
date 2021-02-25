@@ -8,7 +8,6 @@ class CarController {
       order: [['rental_price_per_day', 'ASC']]
     })
       .then(cars => {
-
         cars.forEach(el => {
           el.rupiah = formatRupiah(el.rental_price_per_day)
         })
@@ -60,6 +59,24 @@ class CarController {
       })
   }
 
+
+  static addForm(req, res) {
+    res.render('addFormCar')
+  }
+
+  static addCar(req, res) {
+    let { merk, type, category, released_year, rental_price_per_day, imageURL, status, plat_number } = req.body;
+    let newCar = { merk, type, category, released_year, rental_price_per_day, imageURL, status, plat_number }
+    
+      Car.create(newCar)
+        .then(car => {
+          res.redirect('/cars')
+        })
+        .catch(err => {
+          console.log(err)
+          res.send(err)
+        })
+  }
 }
 
 module.exports = CarController
