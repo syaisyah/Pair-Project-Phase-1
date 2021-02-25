@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Add Form User</title>
+</head>
+<body>
+  <h1> Form User</h1>
+
+  <form action="/users/add" method="POST">
+    <div>
+      <label for="first_name">First Name</label><br>
+      <input type="text" id="first_name" name="first_name" placeholder="e.g: John"><br><br>
+      <label for="last_name">Last Name</label><br>
+      <input type="text" id="last_name" name="last_name" placeholder="e.g: Doe"><br><br>
+  
+      <label for="identity_number">Identity Card Number</label><br>
+      <input type="text" id="identity_number" name="identity_number" placeholder="32454647484"><br><br>
+      <label for="phone">Phone Number</label><br>
+      <input type="text" id="phone" name="phone_number" placeholder="08123456789"><br><br>
+      <label for="age">Age</label><br>
+      <input type="text" id="age" name="age" placeholder="e.g: 28"><br><br>
+      <label for="address">Address</label><br>
+      <input type="text" id="address" name="address" placeholder="e.g: Jl. Pakubuwana 10, Jakarta Selatan"><br><br>
+    </div>
+
+
+    <div>
+      <label>Gender:</label><br>
+      <input type="radio" id="female" name="gender" value="female">
+      <label for="female">female</label>
+      <input type="radio" id="male" name="gender" value="male">
+      <label for="male">male</label><br>
+    </div>
+
+    <div><br>
+      <input type="submit" value="Save">
+      <input type="reset" value="Cancel">
+    </div>
+  </form>
+
+  </body>
+  </html>

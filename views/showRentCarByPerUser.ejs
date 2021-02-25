@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Car Rent by User</title>
+</head>
+
+<body>
+  <h1>List Cars Rent By :</h1>
+      <h2><%=dataUserCars[0].User.getFullNameUser()%></h2>
+      <table border="1">
+        <tr>
+          <th>Merk</th>
+          <th>Type</th>
+          <th>Category</th>
+          <th>Price/Day</th>
+          <th>Start Date</th>
+          <th>Finish Date</th>
+          <th>Total Day</th>
+          <th>Total Price</th>
+        </tr>
+        <tr>
+         <% dataUserCars.forEach(el => { %>
+            <tr>
+              <td><%= el.Car.merk %></td>
+              <td><%= el.Car.type %></td>
+              <td><%= el.Car.category %></td>
+              <td><%= el.Car.rental_price_per_day %></td>
+              <td><%= el.newStartDate %></td>
+              <td><%= el.newFinishDate %></td>
+              <td><%= el.totalDay %></td>
+              <td><%= el.totalPrice%></td>
+            </tr>
+         <% }) %>
+        </tr>
+      </table>
+</body>
+
+</html>

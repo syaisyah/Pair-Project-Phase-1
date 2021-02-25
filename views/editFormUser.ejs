@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Form User</title>
+</head>
+
+<body>
+  <h1> Edit Form User</h1>
+  <form action="/users/edit/<%=user.id%>" method="POST">
+    <div>
+      <label for="first_name">First Name</label><br>
+      <input type="text" id="first_name" name="first_name" value="<%= user.first_name %>"><br><br>
+      <label for="last_name">Last Name</label><br>
+      <input type="text" id="last_name" name="last_name" value="<%= user.last_name %>"><br><br>
+
+      <label for="identity_number">Identity Card Number</label><br>
+      <input type="text" id="identity_number" name="identity_number" value="<%= user.identity_number %>"><br><br>
+      <label for="phone">Phone Number</label><br>
+      <input type="text" id="phone" name="phone_number" value="<%= user.phone_number %>"><br><br>
+      <label for="age">Age</label><br>
+      <input type="text" id="age" name="age" value="<%= user.age %>"><br><br>
+      <label for="address">Address</label><br>
+      <input type="text" id="address" name="address" value="<%= user.address %>"><br><br>
+    </div>
+
+
+    <div>
+      <label>Gender:</label><br>
+      <input type="radio" id="female" name="gender" value="female" <%=(user.gender==='female' ) ? 'checked' : '' %>>
+      <label for="female">female</label>
+      <input type="radio" id="male" name="gender" value="male" <%=(user.gender==='male' ) ? 'checked' : '' %>>
+      <label for="male">male</label><br>
+    </div>
+
+    <div><br>
+      <input type="submit" value="Save">
+      <input type="reset" value="Cancel">
+    </div>
+  </form>
+
+</body>
+
+</html>
