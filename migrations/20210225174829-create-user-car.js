@@ -23,7 +23,7 @@ module.exports = {
           model: 'Cars',
           key: 'id'
         },
-        unDelete: 'cascade',
+        onDelete: 'cascade',
         onUpdate: 'cascade'
       },
       start_date: {

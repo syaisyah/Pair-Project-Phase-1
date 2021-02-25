@@ -1,6 +1,7 @@
 const { Car, User, UserCars } = require('../models')
 const formatRupiah = require('../helpers/formatRupiah')
 
+
 class CarController {
   static showList(req, res) {
     Car.findAll()
