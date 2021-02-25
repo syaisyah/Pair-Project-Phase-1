@@ -5,16 +5,15 @@ const CarController = require('../controllers/CarController')
 
 
 router.get('/', CarController.showList)
-// // otw
-// router.get('/sewa/:id', CarController.rent);
-
-router.get('/delete/:id', CarController.delete)
 router.get('/add', CarController.addForm)
 router.post('/add', CarController.addCar)
+router.get('/edit/:id', CarController.editForm)
+router.post('/edit/:id', CarController.updateCar)
+router.get('/delete/:id', CarController.delete)
 
 
 // menampilkan list cars dengan status rent
-//router.get('/rent', CarController.showRentCars)
+router.get('/rent', CarController.showRentCars)
 
 
 
