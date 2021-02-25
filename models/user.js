@@ -21,14 +21,30 @@ module.exports = (sequelize, DataTypes) => {
   User.init({
     first_name: DataTypes.STRING,
     last_name: DataTypes.STRING,
-    identity_number: DataTypes.STRING,
     phone_number: DataTypes.STRING,
     age: DataTypes.STRING,
     gender: DataTypes.STRING,
-    address: DataTypes.STRING
+    address: DataTypes.STRING,
+    identity_number: {
+      type: DataTypes.STRING,
+      validate: {
+        notEmpty: {
+          args: true,
+          msg: "Warning, identity number is required"
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'User',
   });
+
+  // direct call hooks
+  User.beforeCreate((user, options) => {
+    if (!user.last_name) {
+      user.last_name = cast.first_name
+    }
+  });
+
   return User;
 };

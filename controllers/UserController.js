@@ -1,4 +1,4 @@
-const { User, Car, UserCars } = require('../models')
+const { User, Car, UserCar } = require('../models')
 const converDate = require('../helpers/convertDate')
 const formatRupiah = require('../helpers/formatRupiah')
 
@@ -23,9 +23,11 @@ class UserController {
   }
 
   static showList(req, res) {
-    User.findAll()
+    User.findAll({
+      order: [['first_name', 'ASC']]
+    })
       .then(users => {
-        console.log(users)
+        //console.log(users)
         res.render('listUser', { data: users })
       })
       .catch(err => {
@@ -88,27 +90,29 @@ class UserController {
     let id = +req.params.id;
     //nyari data di UserCars jika ada id sesuai id User, ambil juga data cars nya
 
-    UserCars.findAll({
+    UserCar.findAll({
       where: {
         UserId: id
       },
       include: [User, Car]
     })
       .then(dataUserCars => {
+        //res.send(dataUserCars)
+
         if (dataUserCars.length > 0) {
+          // console.log(dataUserCars)
           dataUserCars.forEach(el => {
             el.rental_price_per_day = formatRupiah(el.Car.rental_price_per_day)
             el.newStartDate = converDate(el.start_date)
             el.newFinishDate = converDate(el.finish_date)
-            el.totalDay = UserCars.getTotalDay(el.start_date, el.finish_date)
+            el.totalDay = UserCar.getTotalDay(el.start_date, el.finish_date)
             el.totalPrice = formatRupiah(Number(el.totalDay) * Number(el.Car.rental_price_per_day))
           })
-
           res.render('showRentCarByPerUser', { dataUserCars })
         }
         else {
           // tapi ini bisa dihapus karena kalo user udah ga nyewa, ngapain masi disimpen di database
-          res.send(`the user hasn't rented any car yet`)
+          res.send(`The user hasn't rented any car yet`)
         }
       })
       .catch(err => {

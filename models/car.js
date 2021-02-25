@@ -19,9 +19,17 @@ module.exports = (sequelize, DataTypes) => {
     category: DataTypes.STRING,
     released_year: DataTypes.INTEGER,
     rental_price_per_day: DataTypes.INTEGER,
-    imageURL: DataTypes.STRING,
     status: DataTypes.STRING,
-    plat_number: DataTypes.STRING
+    plat_number: DataTypes.STRING,
+    imageURL: {
+      type: DataTypes.STRING,
+      validate: {
+        isURL: {
+          args: true,
+          msg: 'Format image must be in URL'
+        }
+      }
+    }
   }, {
     sequelize,
     modelName: 'Car',

@@ -4,7 +4,9 @@ const formatRupiah = require('../helpers/formatRupiah')
 
 class CarController {
   static showList(req, res) {
-    Car.findAll()
+    Car.findAll({
+      order: [['rental_price_per_day', 'ASC']]
+    })
       .then(cars => {
 
         cars.forEach(el => {
